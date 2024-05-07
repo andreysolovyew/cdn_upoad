@@ -35,8 +35,8 @@ getArray "content/list.txt"
 for FILE in "${array[@]}"
 do
     # получаем токен
-    # TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=parfenov@1med.tv' --data-urlencode 'password=Gy3tR2cU');
-    TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=parfenov@1med.tv' --data-urlencode 'password=Gy3tR2cU' | jq '.token');
+    # TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=parfenov@1med.tv' --data-urlencode 'password=######');
+    TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=parfenov@1med.tv' --data-urlencode 'password=######' | jq '.token');
     echo $TOKEN
     TOKEN=$TOKEN | sed 's/\"//g'
     TOKEN=${TOKEN/\"/ }
