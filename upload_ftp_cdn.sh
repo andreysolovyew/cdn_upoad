@@ -35,8 +35,7 @@ getArray "content/list.txt"
 for FILE in "${array[@]}"
 do
     # получаем токен
-    # TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=parfenov@1med.tv' --data-urlencode 'password=######');
-    TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=parfenov@1med.tv' --data-urlencode 'password=######' | jq '.token');
+    TOKEN=$(curl "https://api.cdnvideo.ru/app/oauth/v1/token/" --data-urlencode 'username=#####' --data-urlencode 'password=######' | jq '.token');
     echo $TOKEN
     TOKEN=$TOKEN | sed 's/\"//g'
     TOKEN=${TOKEN/\"/ }
@@ -56,8 +55,8 @@ do
         DIR=$(dirname -- "$FILE")
         #echo $DIR
         echo $FILE
-        CDNPATH='https://api.cdnvideo.ru/app/storage/v1/ribokuju57/files/'
-        CDNPATHS='http://api.cdnvideo.ru/app/storage/v1/ribokuju57/files/'
+        CDNPATH='https://api.cdnvideo.ru/app/storage/v1/#######/files/'
+        CDNPATHS='http://api.cdnvideo.ru/app/storage/v1/#######/files/'
         CDNPATH+=$FILE
         CDNPATHS+=$FILE
         #echo $CDNPATH
@@ -72,7 +71,7 @@ do
         CDNPATHS=$(trim $CDNPATHS)
 
         # загружаем файл в Хранилище
-        #echo "https://api.cdnvideo.ru/app/storage/v1/ribokuju57/files/$FILE" -F "file=@$filename" -H "$CDN"
+        #echo "https://api.cdnvideo.ru/app/storage/v1/########/files/$FILE" -F "file=@$filename" -H "$CDN"
 
         # отправляем файл в CDN и получаем ответ от CDN
         RESULT=$(curl "$CDNPATH" -F "file=@$FILE" -H "$CDN" | jq '.status');
